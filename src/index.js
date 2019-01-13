@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Header from './Header';
 
-const App = () => <h1>Welcome to Hacker News Client!</h1>
+
+const App = () => <Header/>
 
 
 
