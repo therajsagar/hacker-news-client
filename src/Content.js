@@ -10,11 +10,12 @@ action = async () => {
 console.log(arr);
 
 for(let i=0;i<arr.length;i++){
-    let by, score, title, url;
+    let res;
     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json?print=pretty`)
     .then(response => response.json())
-    .then(result => { {by, score,title, url} = result} ) ;
-    console.log(`By = ${by}, Title=${title}, Score=${score}, URL=${url}`);
+    .then(result =>res =  result) ;
+    console.log(`By = ${res.by}, \nTitle = ${res.title}, \nScore = ${res.score}, \nURL = ${res.url}`);
+    break;
 }
 
 }
