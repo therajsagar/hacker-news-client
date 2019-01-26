@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-expressions */
-
-
 import React from 'react';
+import '../styles/app.css';
+
 import Header from './Header.jsx';
-import './content.css';
 import News from './News.jsx';
-import logo from '../loading.gif';
+import Footer from './Footer.jsx';
+
+import logo from '../assets/loading.gif';
 
 
-class Content extends  React.Component {
+class App extends  React.Component {
 
 constructor(){
     super();
@@ -29,7 +30,6 @@ getData = async () => {
     let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json?print=pretty`);
     let data = await api.json();
     const {by, score, title, url, type, id} = data;
-    //console.log(`${i+1}. By = ${by}\nScore = ${score}\nTitle = ${title}\nLink = ${url}`);
     values.push({title, url, by, score, type, id}); 
 }
 this.setState({loc: end,  current : values});
@@ -54,21 +54,27 @@ componentDidMount(){
 
 render(){
 
-    let   content= this.state.current.map( i=> <News key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
+     let   content= this.state.current.map( i=> <News key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
 
-      return ( <div className='contents'>
-      <Header />
-          <ol start={this.state.loc-30+1}>
+      return (
+          <div>
+          {(this.state.current.length===0) && <div><img src={logo} alt='Loading...' className='loading' /></div>}
+
+
+           { (this.state.current.length>0) && <div className='contents'>
+           <Header />
+           
+           
+           <ol start={this.state.loc-30+1}>
               {content}
           </ol>
-         {(this.state.current.length===0) && <img src={logo} alt='Loading...' className='loading' />}
-         <footer>
-         { (this.state.current.length>0) && <button onClick={this.getData}>More....</button>}
-         </footer>
-         <hr/>
+
+          
+         <Footer action={this.getData}/>
+          </div>}
           </div>
-)
+          )
     }    
 }
 
-export default  Content;
+export default  App;

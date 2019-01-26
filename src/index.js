@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import  Content from './components/Content.jsx';
+import  App from './components/App.jsx';
 
-const App = () => <div><Content/> </div>
+const Main = () => <div><App/> </div>
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Main />, document.getElementById('root'));
 
 
 if(module.hot){

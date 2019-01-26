@@ -1,10 +1,10 @@
 import React from 'react';
-import './header.css';
+import '../styles/header.css';
 
 const Header = () => 
 <header>
 <img src="header.png" alt="Hacker News" className="Header"/>
-<p>Hacker News Client</p>
+<p>Hacker News</p>
 
 
 </header>

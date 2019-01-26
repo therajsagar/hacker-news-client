@@ -1,5 +1,5 @@
 import React from 'react';
-import './news.css'
+import '../styles/news.css'
 
 const News = (props) =>    <li>
     <a href={props.url} target="_blank" rel="noopener noreferrer"><span className='title'>  {props.title}</span></a> 
