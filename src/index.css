@@ -16,10 +16,10 @@ code {
 
 
 header{
-  height: 40px;
+  height: 30px;
  display: flex;
  align-items: center;
- background: linear-gradient(to right, #FC6307, darkorange);
+ background:  #FC6307;
 }
 
 header > img{
@@ -30,7 +30,7 @@ header > p {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
-  font-size: 100%;
+  font-size: 20px;
   margin-left: 20px;
   font-weight: bold;
 }

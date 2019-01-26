@@ -2,13 +2,14 @@
 
 import React from 'react';
 import './content.css';
+import News from './News.jsx';
 
 
 class Content extends  React.Component {
 
 constructor(){
     super();
-    this.state ={index: [], loc : null}
+    this.state ={index: [], loc : null, current : []}
 }
 
 
@@ -16,18 +17,19 @@ getData = async () => {
 
     let arr = this.state.index;
     let beg = this.state.loc;
-    let end = beg+10;
+    let end = beg+30;
+
+    let values = [];
 
     for(let i=beg;i<end; i++) {
 
     let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json?print=pretty`);
     let data = await api.json();
-    const {by, score, title, url} = data;
-    console.log(`${i+1}. By = ${by}\nScore = ${score}\nTitle = ${title}\nLink = ${url}`)
+    const {by, score, title, url, type, id} = data;
+    //console.log(`${i+1}. By = ${by}\nScore = ${score}\nTitle = ${title}\nLink = ${url}`);
+    values.push({title, url, by, score, type, id}); 
 }
-
-this.setState({loc: end});
-
+this.setState({loc: end,  current : values});
 }
 
 
@@ -45,9 +47,13 @@ componentDidMount(){
 
 render(){
 
+    let hello = this.state.current.map( i=> <News key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
 
       return ( <div className='contents'>
-          <button onClick={this.getData}>Hello</button>
+          <ol>
+              {hello}
+          </ol>
+                    <button onClick={this.getData}>More...</button>
           </div>
 )
     }    
