@@ -16,7 +16,7 @@ code {
 
 
 header{
-  height: 50px;
+  height: 40px;
  display: flex;
  align-items: center;
  background: linear-gradient(to right, #FC6307, darkorange);

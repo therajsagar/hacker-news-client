@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './Header';
-import  Content from './Content';
+import Header from './Header.jsx';
+import  Content from './Content.jsx';
 
 const App = () => <div>
     <Header/>
