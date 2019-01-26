@@ -21,3 +21,10 @@ button {
     height:  auto;
     width: auto;
 }
+
+
+hr{
+    margin-top: 20px;
+    height: 1.5px;
+    background-color: orangered;
+}

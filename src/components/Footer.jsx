@@ -3,8 +3,8 @@ import '../styles/footer.css';
 
 const Footer =(props) => 
 (<footer>
-<button onClick={props.action}>More....</button>
-<hr/>
+ {(props.page>1) && <button onClick={props.prev}>{`<<Prev ||`}</button>}
+<button onClick={props.next}>{`More>>`}</button>
 </footer>
 )
 export default Footer;

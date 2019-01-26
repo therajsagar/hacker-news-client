@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/app.css';
 
 import Header from './Header.jsx';
-import News from './News.jsx';
+import Story from './Story.jsx';
 import Footer from './Footer.jsx';
 
 import logo from '../assets/loading.gif';
@@ -17,17 +17,16 @@ constructor(){
 }
 
 
-getData = async () => {
-
+nextPage = async () => {
     this.setState({current: []});
-    let arr = this.state.index;
-    let beg = this.state.loc;
+
+    let beg= this.state.loc;
     let end = beg+30;
+    let arr = this.state.index;
 
     let values = [];
-
     for(let i=beg;i<end; i++) {
-    let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json?print=pretty`);
+    let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
     let data = await api.json();
     const {by, score, title, url, type, id} = data;
     values.push({title, url, by, score, type, id}); 
@@ -36,25 +35,48 @@ this.setState({loc: end,  current : values});
 }
 
 
-clickHandler = async () => {
-let call = await fetch(`https://hacker-news.firebaseio.com/v0/topstories.json`);
-let arr =  await call.json();
-this.setState({index : arr, loc: 0});
-this.getData();
+prevPage =  async ()=>{
+    this.setState({current: []});
+    let end= this.state.loc-30;
+    let beg = end-30;
+    let arr = this.state.index;
+
+    let values = [];
+    for(let i=beg;i<end; i++) {
+    let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
+    let data = await api.json();
+    const {by, score, title, url, type, id} = data;
+    values.push({title, url, by, score, type, id}); 
 }
+    this.setState({loc: end,  current : values});
+}
+
+
+
+
+loadData = async () => {
+     let call = await fetch(`https://hacker-news.firebaseio.com/v0/topstories.json`);
+     let arr =  await call.json();
+     this.setState({index : arr, loc: 0});
+     this.nextPage();
+}
+
+
 
 componentDidMount(){
-    this.clickHandler();
-
+    this.loadData();
 }
 
 
-/*         { (this.state.current.length>0) && <button onClick={this.getData}>Previous.</button>}           */
+componentWillMount(){
+    this.setState({});
+}
+
 
 
 render(){
 
-     let   content= this.state.current.map( i=> <News key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
+     let   content= this.state.current.map( i=> <Story key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
 
       return (
           <div>
@@ -70,7 +92,8 @@ render(){
           </ol>
 
           
-         <Footer action={this.getData}/>
+         <Footer prev={this.prevPage} next={this.nextPage} page={(this.state.loc/30)}/>
+         <hr/>
           </div>}
           </div>
           )

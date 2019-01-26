@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/news.css'
+import '../styles/story.css'
 
-const News = (props) =>    <li>
+const Story = (props) =>    <li>
     <a href={props.url} target="_blank" rel="noopener noreferrer"><span className='title'>  {props.title}</span></a> 
     <br/>
     <span className='subtext'>{props.score} points by {props.by} | {props.type}</span>
@@ -9,4 +9,4 @@ const News = (props) =>    <li>
     </li>
 
 
-export default News;
+export default Story;
