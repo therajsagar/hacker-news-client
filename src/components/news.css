@@ -1,0 +1,22 @@
+
+a{
+    text-decoration: none !important;
+    font-size:  13.333px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
+
+
+a:visited{
+    color: grey;
+}
+
+.subtext {
+    font-size: 10.333px;
+    color: grey;
+}
+
+li{
+    color: grey;
+    font-size:  13.333px;
+}
