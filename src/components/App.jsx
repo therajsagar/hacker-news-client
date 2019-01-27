@@ -13,42 +13,46 @@ class App extends  React.Component {
 
 constructor(){
     super();
-    this.state ={index: [], loc : null, current : []}
+    this.state ={index: [], loc : null, stories :[], current : []}
 }
 
 
 nextPage = async () => {
     this.setState({current: []});
-
     let beg= this.state.loc;
     let end = beg+30;
+
+    let values = this.state.stories;
+
     let arr = this.state.index;
 
-    let values = [];
+    if(values.length<end){
+
     for(let i=beg;i<end; i++) {
     let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
     let data = await api.json();
     const {by, score, title, url, type, id} = data;
     values.push({title, url, by, score, type, id}); 
 }
-this.setState({loc: end,  current : values});
+this.setState({loc: end,  stories : values, current: values.slice(beg, end)});
+}
+
+else{
+    this.setState({loc: end, current: values.slice(beg, end)})
+}
+
+
 }
 
 
 prevPage =  async ()=>{
-    this.setState({current: []});
+
     let end= this.state.loc-30;
     let beg = end-30;
-    let arr = this.state.index;
 
-    let values = [];
-    for(let i=beg;i<end; i++) {
-    let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
-    let data = await api.json();
-    const {by, score, title, url, type, id} = data;
-    values.push({title, url, by, score, type, id}); 
-}
-    this.setState({loc: end,  current : values});
+    let values = this.state.stories;
+
+    this.setState({loc: end,  current : values.slice(beg,end)});
 }
 
 
