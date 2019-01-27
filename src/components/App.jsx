@@ -17,10 +17,12 @@ constructor(){
 }
 
 
+
+
 nextPage = async () => {
     this.setState({current: []});
     let beg= this.state.loc;
-    let end = beg+30;
+    let end = beg+15;
 
     let values = this.state.stories;
 
@@ -40,15 +42,13 @@ this.setState({loc: end,  stories : values, current: values.slice(beg, end)});
 else{
     this.setState({loc: end, current: values.slice(beg, end)})
 }
-
-
 }
 
 
 prevPage =  async ()=>{
 
-    let end= this.state.loc-30;
-    let beg = end-30;
+    let end= this.state.loc-15;
+    let beg = end-15;
 
     let values = this.state.stories;
 
@@ -59,6 +59,7 @@ prevPage =  async ()=>{
 
 
 loadData = async () => {
+    this.setState({current: [], stories: []})
      let call = await fetch(`https://hacker-news.firebaseio.com/v0/topstories.json`);
      let arr =  await call.json();
      this.setState({index : arr, loc: 0});
@@ -88,16 +89,14 @@ render(){
 
 
            { (this.state.current.length>0) && <div className='contents'>
-           <Header />
+           <Header reload={this.loadData}/>
            
-           
-           <ol start={this.state.loc-30+1}>
+           <ol start={this.state.loc-15+1}>
               {content}
-          </ol>
+            </ol>
 
           
-         <Footer prev={this.prevPage} next={this.nextPage} page={(this.state.loc/30)}/>
-         <hr/>
+         <Footer prev={this.prevPage} next={this.nextPage} page={(this.state.loc/15)} />
           </div>}
           </div>
           )

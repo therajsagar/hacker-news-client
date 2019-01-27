@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/header.css';
 
-const Header = () => 
+const Header = (props) => 
 <header>
 <img src="header.png" alt="Hacker News" className="Header"/>
-<p>Hacker News</p>
+<button onClick={props.reload}>Hacker News</button>
 
 
 </header>
