@@ -7,6 +7,7 @@ const Header = (props) =>
 <button onClick={props.reload}>Hacker News</button>
 
 
+
 </header>
 
 export default Header;
