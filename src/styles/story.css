@@ -11,8 +11,8 @@ a:visited{
     color: grey;
 }
 
-.subtext {
-    font-size: 9.333px;
+.subtext ,  .site{
+    font-size: 11.333px;
     color: grey;
 }
 

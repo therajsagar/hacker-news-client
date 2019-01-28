@@ -13,47 +13,65 @@ class App extends  React.Component {
 
 constructor(){
     super();
-    this.state ={index: [], loc : null, stories :[], current : []}
+    this.state ={index: [], loc : null, stories :[], current : [], loading: false};
+}
+
+
+
+autoLoad = async () => {
+    let values = this.state.stories;
+    let beg= values.length;
+    let end = beg+15;
+    let arr = this.state.index;
+
+    if(this.state.loc>=beg){
+        this.setState({loading: true});
+        for(let i=beg;i<end; i++) {
+            let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
+            let data = await api.json();
+            const {by, score, title, url, type, id, descendants} = data;
+            values.push({title, url, by, score, type, id, descendants}); 
+        }
+        this.setState({stories : values, loading: false});
+    }
 }
 
 
 
 
-nextPage = async () => {
+
+nextPage = async () => { 
     this.setState({current: []});
     let beg= this.state.loc;
     let end = beg+15;
-
     let values = this.state.stories;
-
     let arr = this.state.index;
-
     if(values.length<end){
 
-    for(let i=beg;i<end; i++) {
-    let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
-    let data = await api.json();
-    const {by, score, title, url, type, id} = data;
-    values.push({title, url, by, score, type, id}); 
-}
-this.setState({loc: end,  stories : values, current: values.slice(beg, end)});
+        for(let i=beg;i<end; i++) {
+            let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
+            let data = await api.json();
+            const {by, score, title, url, type, id, descendants} = data;   
+            values.push({title, url, by, score, type, id, descendants}); 
+        }
+        this.setState({loc: end,  stories : values, current: values.slice(beg, end)});
+        }
+        else{
+            this.setState({loc: end, current: values.slice(beg, end)});
+        }
+        this.autoLoad();
 }
 
-else{
-    this.setState({loc: end, current: values.slice(beg, end)})
-}
-}
+
 
 
 prevPage =  async ()=>{
-
     let end= this.state.loc-15;
     let beg = end-15;
-
     let values = this.state.stories;
-
     this.setState({loc: end,  current : values.slice(beg,end)});
 }
+
 
 
 
@@ -81,7 +99,7 @@ componentWillMount(){
 
 render(){
 
-     let   content= this.state.current.map( i=> <Story key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type}/>)
+     let content= this.state.current.map( i=> <Story key ={i.id} by={i.by}  title={i.title} score ={i.score} url = {i.url} type={i.type} comment={i.descendants}/>);
 
       return (
           <div>
@@ -95,8 +113,7 @@ render(){
               {content}
             </ol>
 
-          
-         <Footer prev={this.prevPage} next={this.nextPage} page={(this.state.loc/15)} />
+         <Footer prev={this.prevPage} next={this.nextPage} page={(this.state.loc/15)} loading={this.state.loading}/>
           </div>}
           </div>
           )
