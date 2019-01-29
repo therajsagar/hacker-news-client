@@ -1,5 +1,5 @@
 
-a{
+.headline{
     text-decoration: none !important;
     font-size:  13.333px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -7,13 +7,14 @@ a{
 }
 
 
-a:visited{
+.headline:visited{
     color: grey;
 }
 
-.subtext ,  .site{
+.subtext ,  .site, .subtext>a{
     font-size: 11.333px;
     color: grey;
+    text-decoration: none !important;
 }
 
 li{
