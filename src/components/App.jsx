@@ -18,13 +18,13 @@ constructor(){
 
 
 
-autoLoad = async () => {
+autoLoad = async (factor) => {
     let values = this.state.stories;
     let beg= values.length;
     let end = beg+15;
     let arr = this.state.index;
 
-    if(this.state.loc>=beg){
+    if(factor===beg){
         this.setState({loading: true});
         for(let i=beg;i<end; i++) {
             let api =     await fetch(`https://hacker-news.firebaseio.com/v0/item/${arr[i]}.json`);
@@ -59,7 +59,7 @@ nextPage = async () => {
         else{
             this.setState({loc: end, current: values.slice(beg, end)});
         }
-        this.autoLoad();
+        this.autoLoad(end);
 }
 
 
