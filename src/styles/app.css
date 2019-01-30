@@ -1,0 +1,17 @@
+
+.contents{
+    margin: 7px 100px 5px 100px;
+    background-color:  whitesmoke;
+}
+
+
+button {
+    font-size: 13.5px;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:  Transparent;
+    border: none;
+    cursor: pointer;
+    color: black;
+    outline: none;
+}

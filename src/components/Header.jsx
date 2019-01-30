@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/header.css';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const Header = () => 
 <header>
       <img src="header.png" alt="Hacker News" className="Header"/>
-      <Link to ='/'><h3>Hacker News</h3></Link>
-      <Link to='/newest'><h3>new</h3></Link>
+      <NavLink style={{margin: '0 5px 0 5px', fontSize: '13x',  color: 'black', fontWeight: 'bold', textDecoration: 'none'}} to ='/'><h3>Hacker News</h3></NavLink>
+      <span>|</span>
+      <NavLink  style={{margin: '0 5px 0 5px', fontSize: '13x', color:'black' ,  textDecoration: 'none'}}   to='/newStories'><h3>New</h3></NavLink>
 </header>
 
 export default Header;

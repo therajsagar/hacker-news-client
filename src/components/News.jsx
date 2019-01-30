@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import React from 'react';
-import '../styles/news.css';
-
 import Item from './Item.jsx';
 import Footer from './Footer.jsx';
 
@@ -57,12 +55,10 @@ render(){
 
       return (
           <div>
-         {(this.state.page)&&<div className='contents'>       
-                 
-        <ol start={(this.state.page-1)*30 +1 }>
+         {(this.state.page)&&<div>       
+        <table>
            {content}
-         </ol>
-
+         </table>
       <Footer prev={this.prevPage} next={this.nextPage} page={this.state.page}/>      
        </div>}
        </div>

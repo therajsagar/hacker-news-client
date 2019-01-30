@@ -1,9 +1,11 @@
 
 header{
     height: 30px;
-   display: flex;
+    font-size:  0.85em;
+    display: flex;
    align-items: center;
    background:  #FC6307;
+   margin-bottom: 10px;
   }
   
   header > img{
@@ -19,8 +21,3 @@ header{
     font-weight: bold;
     color: black;
   }
-
-  Link{
-    font-size: 10px;
-  }
-
