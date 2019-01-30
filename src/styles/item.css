@@ -1,6 +1,6 @@
-tr{
-    list-style-position: inside;
-    padding-left: 0;
+td{
+    display: list-item;
+    list-style-type: none;
 }
 
 .headline{
@@ -20,10 +20,3 @@ tr{
     color: grey;
     text-decoration: none !important;
 }
-
-
-
-.item_body{
-    font-weight:normal;
-}
-

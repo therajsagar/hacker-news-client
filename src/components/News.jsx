@@ -2,6 +2,7 @@
 import React from 'react';
 import Item from './Item.jsx';
 import Footer from './Footer.jsx';
+import Nope from './Nodata.jsx'
 
 
 
@@ -24,16 +25,17 @@ prevPage = async () => {
 
 nextPage = async () => {
     let page = this.state.page+1;
+    let arr;
     let call = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
-    let arr =  await call.json();
+    try{
+    arr =  await call.json();}
+    catch(error){
+      arr = [];
+      page = page-1;
+    }
     this.setState({stories: arr, page: page});
 }
 
-
-refresh = async ()=>{
-   await  this.setState({page: null, stories :[]});
-    this.nextPage();
-}
 
 
 componentDidMount(){
@@ -41,11 +43,9 @@ componentDidMount(){
 }
 
 
-
 componentWillUnmount(){
     this.setState({});
 }
-
 
 
 
@@ -55,9 +55,12 @@ render(){
 
       return (
           <div>
-         {(this.state.page)&&<div>       
+        {(!this.state.stories.length) && this.state.page && <Nope />}
+         {(this.state.page) && (this.state.stories.length>0) &&<div>       
         <table>
+            <tbody>
            {content}
+           </tbody>
          </table>
       <Footer prev={this.prevPage} next={this.nextPage} page={this.state.page}/>      
        </div>}

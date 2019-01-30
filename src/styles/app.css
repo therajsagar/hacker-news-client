@@ -1,9 +1,7 @@
 
 .contents{
-    margin: 7px 100px 5px 100px;
     background-color:  whitesmoke;
 }
-
 
 button {
     font-size: 13.5px;
@@ -15,3 +13,4 @@ button {
     color: black;
     outline: none;
 }
+
