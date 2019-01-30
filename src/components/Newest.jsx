@@ -7,7 +7,7 @@ import Footer from './Footer.jsx';
 
 
 
-class News extends  React.Component {
+class Newest extends  React.Component {
 
 constructor(){
     super();
@@ -66,4 +66,4 @@ render(){
     }    
 }
 
-export default  News;
+export default  Newest;
