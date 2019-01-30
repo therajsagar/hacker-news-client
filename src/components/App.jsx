@@ -1,75 +1,33 @@
-/* eslint-disable no-unused-expressions */
 import React from 'react';
+import {BrowserRouter, Route, Redirect, Link,Switch} from 'react-router-dom';
+import News from './News';
+import Newest from './Newest';
+import Header from './Header';
 import '../styles/app.css';
 
-import Header from './Header.jsx';
-import Story from './Story.jsx';
-import Footer from './Footer.jsx';
 
-/*import logo from '../assets/loading.gif';*/
-
-
-class App extends  React.Component {
-
-constructor(){
-    super();
-    this.state ={page : null, stories :[]};
+const App = () =>{
+    return( <div>
+        <Header className='top'/>
+        <BrowserRouter>
+        <div>
+        <ul className='top'>
+                <li>
+                    <Link to ='/home'><h3>Hacker News</h3></Link>
+                </li>
+                <li>
+                    <Link to='/newest'><h3>new</h3></Link>
+                </li>
+            </ul>
+            <Switch>
+            <Redirect exact path='/home' to='/' />
+            <Route path = '/' component = {News}/>
+            <Route path = '/newest' component = {Newest}/>
+            <Route component={Error} />
+            </Switch>
+        </div>
+       </BrowserRouter>
+       </div>)
 }
 
-
-
-prevPage = async () => {
-    let page = this.state.page-1;
-    let call = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
-    let arr =  await call.json();
-    this.setState({stories: arr, page: page});
-}
-
-
-nextPage = async () => {
-    let page = this.state.page+1;
-    let call = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
-    let arr =  await call.json();
-    this.setState({stories: arr, page: page});
-}
-
-/*
-refresh = async ()=>{
-   await  this.setState({page: null});
-    this.nextPage();
-}
-*/
-
-componentDidMount(){
-    this.nextPage();
-}
-
-
-
-componentWillMount(){
-    this.setState({});
-}
-
-
-
-
-render(){
-
-    let content = this.state.stories.map( i=> <Story key ={i.id} user={i.user}  title={i.title} score ={i.points} url = {i.url} type={i.type} comment={i.comments_count}  domain={i.domain} time_ago={i.time_ago}/>);
-
-      return (
-
-        <div className='contents'>        
-        <Header reload={this.refresh}/>
-        
-        <ol start={(this.state.page-1)*30 +1 }>
-           {content}
-         </ol>
-
-      <Footer prev={this.prevPage} next={this.nextPage} page={this.state.page}/>      
-       </div>
-          )
-    }    
-}
-
-export default  App;
+export default App;

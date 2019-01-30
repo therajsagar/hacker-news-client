@@ -1,0 +1,24 @@
+
+.contents{
+    margin: 10px 120px 30px 120px;
+    background-color:  whitesmoke;
+}
+
+
+button {
+    font-size: 13.5px;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:  Transparent;
+    border: none;
+    cursor: pointer;
+    color: grey
+}
+
+.loading{
+    display: block;
+    margin: auto;
+    height:  auto;
+    width: auto;
+}
+
