@@ -17,8 +17,14 @@ constructor(){
 
 prevPage = async () => {
     let page = this.state.page-1;
+    let arr;
     let call = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
-    let arr =  await call.json();
+    try{
+    arr =  await call.json();}
+    catch(error){
+      arr = [];
+      page = page+1;
+    }
     this.setState({stories: arr, page: page});
 }
 
@@ -51,7 +57,7 @@ componentWillUnmount(){
 
 render(){
 
-    let content = this.state.stories.map( i=> <Item key ={i.id} user={i.user}  title={i.title} score ={i.points} url = {i.url} type={i.type} comment={i.comments_count}  domain={i.domain} time_ago={i.time_ago}/>);
+    let content = this.state.stories.map( i=> <Item key ={i.id} serial={this.state.stories.indexOf(i)+1+(this.state.page-1)*30} user={i.user}  title={i.title} score ={i.points} url = {i.url} type={i.type} comment={i.comments_count}  domain={i.domain} time_ago={i.time_ago}/>);
 
       return (
           <div>

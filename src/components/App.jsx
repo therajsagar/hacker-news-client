@@ -19,6 +19,7 @@ const App = () =>{
             <Route path = '/newest' component = {Newest}/>
             <Route component={Error} />
             </Switch>
+            <hr/>
         </div>
         </BrowserRouter>
 

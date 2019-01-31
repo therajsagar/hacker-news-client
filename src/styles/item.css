@@ -1,7 +1,8 @@
-td{
+tr{
     display: list-item;
     list-style-type: none;
 }
+
 
 .headline{
     text-decoration: none !important;
@@ -20,3 +21,11 @@ td{
     color: grey;
     text-decoration: none !important;
 }
+
+td {
+    color: #828282;
+    text-decoration: none !important;
+    font-size:  13.333px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+

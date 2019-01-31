@@ -1,6 +1,7 @@
 
 .contents{
     background-color:  whitesmoke;
+    margin:  10px auto 10px auto;
 }
 
 button {
@@ -14,3 +15,7 @@ button {
     outline: none;
 }
 
+hr{
+    height: 1.1px;
+    background-color: #FC6307;
+}
