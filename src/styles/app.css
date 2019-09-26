@@ -1,21 +1,20 @@
-
-.contents{
-    background-color:  whitesmoke;
-    margin:  10px auto 10px auto;
+.contents {
+    background-color: whitesmoke;
+    margin: 10px auto 10px auto;
 }
 
 button {
     font-size: 13.5px;
     display: flex;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:  Transparent;
+    background-color: Transparent;
     border: none;
     cursor: pointer;
     color: black;
     outline: none;
 }
 
-hr{
+hr {
     height: 1.1px;
     background-color: #FC6307;
 }

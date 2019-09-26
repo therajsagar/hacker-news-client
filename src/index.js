@@ -1,15 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom';
+import App from './components/App.jsx';
 import './index.css';
-import  App from './components/App.jsx';
 
-const Main = () => <div><App/> </div>
+render(<App />, document.getElementById('root'));
 
-
-ReactDOM.render(<Main />, document.getElementById('root'));
-
-
-if(module.hot){
-    module.hot.accept();
+if (module.hot) {
+  module.hot.accept();
 }

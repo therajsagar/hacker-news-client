@@ -1,18 +1,18 @@
-.bug{
-    margin: auto;
-    left : 0;
-    bottom : 0;
-    right : 0;
-    top : 0;
-    position : fixed;
+.bug {
+  margin: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
 }
 
-#errortext{
-    position: absolute;
-    top: 70%;
+#errortext {
+  position: absolute;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color:  red;
+  color: red;
   font-weight: bolder;
-  font-size:  25px;
+  font-size: 25px;
 }

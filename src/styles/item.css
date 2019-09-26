@@ -1,22 +1,25 @@
-tr{
+tr {
     display: list-item;
     list-style-type: none;
 }
 
 
-.headline{
+.headline {
     text-decoration: none !important;
-    font-size:  13.333px;
+    font-size: 13.333px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
 }
 
 
-.headline:visited, .title:visited{
+.headline:visited,
+.title:visited {
     color: grey;
 }
 
-.subtext ,  .site, .subtext>a{
+.subtext,
+.site,
+.subtext>a {
     font-size: 11.333px;
     color: grey;
     text-decoration: none !important;
@@ -25,7 +28,6 @@ tr{
 td {
     color: #828282;
     text-decoration: none !important;
-    font-size:  13.333px;
+    font-size: 13.333px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
